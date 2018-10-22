@@ -5,7 +5,7 @@ import psutil
 import sys
 
 for proc in psutil.process_iter():
-    try: 
+    try:
         pinfo = proc.as_dict(attrs=['name'])
     except psutil.NoSuchProcess:
         pass
@@ -13,4 +13,5 @@ for proc in psutil.process_iter():
         if 'transmission-daemon' in pinfo['name']:
             sys.exit(0)
 
-subprocess.call(['/usr/bin/transmission-daemon', '--port', '9091', '--allowed', '127.0.0.1'])
+subprocess.call(['/usr/bin/transmission-daemon', '--port', '9091', '--allowed',
+                 '127.0.0.1'])
